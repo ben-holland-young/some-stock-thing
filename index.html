@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Some Stock Thing</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -16,25 +18,50 @@
 		<!--<navbar></navbar>-->
 		<!--[>add grid component here<]-->
 		<!--<footer-area></footer-area>-->
+        <div class="header container">
+            <div class="row">
+                    <div class="col-md-4"><p></p></div>
+                    <div class="col-md-4">
+                    
+                        <input  v:model="searchSymbol">
+                        <button v-on:click="addSymbol">Add Symbol</button>
+                    
+                    </div>
+                    <div class="col-md-4"><p></p></div>
+            </div>
+        </div>
 		<ul>
-			<input  v:model="searchSymbol">
-			<button v-on:click="addSymbol">Add Symbol</button>
-			<li v-for="price in prices">
-				<p>Symbol: {{price.symbol}}
+			<li v-for="price in prices" class="stock" style="list-style-type: none">
+                <h2>{{price.symbol}}</h2>
 				<br>
-				<p>Date: {{price.date}}</p>
-				<br>
-				<p>Open: {{price.open}}</p>
-				<br>
-				<p>High: {{price.high}}</p>
-				<br>
-				<p>Low: {{price.low}}</p>
-				<br>
-				<p>Close: {{price.close}}</p>
-				<br>
-				<p>Volume: {{price.volume}}</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>Date: {{price.date}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Open: {{price.open}}</p>
+                    </div>
+                </div>
                 <br>
-                <img v-bind:href="price.link" alt="">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>High: {{price.high}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Low: {{price.low}}</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>Close: {{price.close}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Volume: {{price.volume}}</p>
+                    </div>
+                </div>
+                <img v-bind:src="price.link" alt="" style="max-height:100%; max-width: 100%" >
+                <i class="fa fa-times pull-right" aria-hidden="true" v-on:click="removeSymbol"></i>
 			</li>
 		</ul>
 		

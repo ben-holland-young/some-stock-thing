@@ -1,7 +1,33 @@
+//function createCORSRequest(method, url) {
+  //var xhr = new XMLHttpRequest();
+  //if ("withCredentials" in xhr) {
+
+    //// Check if the XMLHttpRequest object has a "withCredentials" property.
+    //// "withCredentials" only exists on XMLHTTPRequest2 objects.
+    //xhr.open(method, url, true);
+
+  //} else if (typeof XDomainRequest != "undefined") {
+
+    //// Otherwise, check if XDomainRequest.
+    //// XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    //xhr = new XDomainRequest();
+    //xhr.open(method, url);
+
+  //} else {
+
+    //// Otherwise, CORS is not supported by the browser.
+    //xhr = null;
+
+  //}
+  //return xhr;
+//}
+
+
 var app = new Vue({
     el: '#app',
     data: {
-		searchSymbol: "MSFT",
+		searchSymbol: "FB",
+        object: {},
 
         prices: [ 
             {symbol: "APPL", date: "2017-01-14", low : "133.25", open: "133.47", close:"135.01", high:"135.09", volume:"35569698",link: "https://chart.finance.yahoo.com/z?s=AAPL&t=1d"}
@@ -10,31 +36,51 @@ var app = new Vue({
     },
     methods: {
         addSymbol: function() {
-            
+            if(this.searchSymbol == "") {
+                alert("put in a symbol");
+            }
+            var chart = "https://chart.finance.yahoo.com/z?s"+this.searchSymbol+"&t=1d";
             var url = "https://www.quandl.com/api/v3/datasets/WIKI/"+this.searchSymbol+".json?api_key=xzBh9JuvESDS6uyTEX2D";
-            this.$http.get(url).then(response => {
-                console.log(response.body);
 
-                //get data here
+            //finance data api
+            
+
+            this.$http.get(url).then(response => {
+                //console.log(response.body);
                 var dataset = response.body["dataset"];
-                var symbol = dataset["dataset_code"];
-                var data = dataset["data"];
-                var date = data[0][0];
-                var open = data[0][1];
-                var high = data[0][2];
-                var low = data[0][3];
-                var close = data[0][4];
-                var volume = data[0][5]
-                //MARK - integrate yahoo chart api from paw and url format like in example price object 
-                var new_symbol = {symbol: symbol, date: date, low: low, open: open, close: close, high: high, volume: volume};
-                this.prices.push(new_symbol);
+                var data = dataset["data"][0];
+                var object = {};
+
+                object.symbol = dataset["dataset_code"];
+                object.date = data[0].toString();
+                object.low = data[1].toString();
+                object.open = data[2].toString();
+                object.close = data[3].toString();
+                object.high = data[4].toString();
+                object.link = "https://chart.finance.yahoo.com/z?s=FB&t=1";
+                object.volume = data[5].toString();
+                
+                this.prices.push(object);
+                //console.log(this.object);
 
             }, response => {
                 //error
             });
+            //this.$http.get(chart).then(response => {
+                    //var link = response.body;
+                    //this.object.link = link;
+                    //console.log(this.object);
+
+            //}, response => {
+                ////error
+
+            //});
+            console.log(this.prices);
 
             
-        }
+        },
+
+        removeSymbol: function() {}
 
     }
 
