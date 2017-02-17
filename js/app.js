@@ -26,7 +26,7 @@
 var app = new Vue({
     el: '#app',
     data: {
-		searchSymbol: "FB",
+		searchSymbol: "",
         object: {},
 
         prices: [ 
@@ -66,16 +66,16 @@ var app = new Vue({
             }, response => {
                 //error
             });
-            var n = this.prices.length;
-            var target = n - 1;
-            //when i fix the cors error you can do this 
-            this.$http.get(chart).then(response => {
-                    var link = response.body;
-                    this.prices[target].link = link;
-            }, response => {
-                //error
+            //var n = this.prices.length;
+            //var target = n - 1;
+            ////when i fix the cors error you can do this 
+            //this.$http.get(chart).then(response => {
+                    //var link = response.body;
+                    //this.prices[target].link = link;
+            //}, response => {
+                ////error
 
-            });
+            //});
 
             console.log(this.prices);
 

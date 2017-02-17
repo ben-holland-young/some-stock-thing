@@ -23,7 +23,8 @@
                     <div class="col-md-4"><p></p></div>
                     <div class="col-md-4">
                     
-                        <input  v:model="searchSymbol">
+                        <input  v-model="searchSymbol">
+                        <p>symbol : {{searchSymbol}}</p>
                         <button v-on:click="addSymbol">Add Symbol</button>
                     
                     </div>
@@ -60,8 +61,12 @@
                         <p>Volume: {{price.volume}}</p>
                     </div>
                 </div>
-                <img v-bind:src="price.link" alt="" style="max-height:100%; max-width: 100%" >
-                <i class="fa fa-times pull-right" aria-hidden="true" v-on:click="removeSymbol"></i>
+                <div class="row">
+                    <img v-bind:src="price.link" alt="" style="max-height:100%; max-width: 100%" >
+                </div>
+                <div class="row">
+                    <i class="fa fa-times pull-right" aria-hidden="true" v-on:click="removeSymbol"></i>
+                </div>
 			</li>
 		</ul>
 		
