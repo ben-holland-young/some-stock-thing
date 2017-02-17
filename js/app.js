@@ -27,6 +27,7 @@ var app = new Vue({
     el: '#app',
     data: {
 		searchSymbol: "",
+        not_found: false,
         object: {},
 
         prices: [ 
@@ -39,7 +40,6 @@ var app = new Vue({
             if(this.searchSymbol == "") {
                 alert("put in a symbol");
             }
-            var chart = "https://chart.finance.yahoo.com/z?s"+this.searchSymbol+"&t=1d";
             var url = "https://www.quandl.com/api/v3/datasets/WIKI/"+this.searchSymbol+".json?api_key=xzBh9JuvESDS6uyTEX2D";
 
             //finance data api
@@ -57,7 +57,7 @@ var app = new Vue({
                 object.open = data[2].toString();
                 object.close = data[3].toString();
                 object.high = data[4].toString();
-                object.link = "https://chart.finance.yahoo.com/z?s=FB&t=1";
+                object.link = "https://chart.finance.yahoo.com/z?s="+object.symbol+"&t=1d";
                 object.volume = data[5].toString();
                 
                 this.prices.push(object);
@@ -65,29 +65,33 @@ var app = new Vue({
 
             }, response => {
                 //error
+                var dialog = new BootstrapDialog({
+                    title: 'Stock Error',
+                    message: 'stock not found',
+                    buttons: [{
+                        label: 'Close this dialog.',
+                        action: function(dialogRef){
+                            dialogRef.close();
+                        }
+                    }]
+                });
+            
+                dialog.open();
+                this.not_found = true;
             });
-            //var n = this.prices.length;
-            //var target = n - 1;
-            ////when i fix the cors error you can do this 
-            //this.$http.get(chart).then(response => {
-                    //var link = response.body;
-                    //this.prices[target].link = link;
-            //}, response => {
-                ////error
-
-            //});
 
             console.log(this.prices);
+        
 
             
         },
 
         removeSymbol: function() {}
 
-    }
+    }   
 
 
-})
+});
 
 //{
   //// GET /someUrl

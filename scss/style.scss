@@ -24,3 +24,35 @@ img {
 .header {
     background: black;
 }
+
+.title {
+    color: white;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.symbol_button {
+
+    background: black;
+    border: 1px solid black; 
+    color: white;
+    margin-bottom:30px;
+    margin-left: 20px;
+    border-bottom: 1px solid #3AB981;
+
+
+}
+
+.symbol_input {
+    background: black;
+    border: 1px solid black;
+    border-bottom: 1px solid #3AB981;
+    color: white;
+
+
+
+}
