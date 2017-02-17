@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Some Stock Thing</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css">
+    <script src="https://use.fontawesome.com/b9f90d1df2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Della+Respira|Droid+Serif|Inconsolata" rel="stylesheet">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -68,9 +69,6 @@
                 <div class="row">
                     <img v-bind:src="price.link" alt="" style="max-height:100%; max-width: 100%;margin: 10px 10px 10px 10px" >
                 </div>
-                <div class="row">
-                    <i class="fa fa-times pull-right" aria-hidden="true" v-on:click="removeSymbol"></i>
-                </div>
             </li>
         </ul>
     </div>
@@ -79,6 +77,14 @@
 		
 		
 	</div>
+    <div id="footer">
+        <div class="row">
+            <div class="col-md-4">Made by Ben Holland-Young</div>
+            <div class="col-md-4"><a href="https://www.github.com/ben-holland-young"><i class="fa fa-github" aria-hidden="true"></i></a></div>
+            <div class="col-md-4"><p></p></div>
+        </div>
+    
+    </div>
 	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
