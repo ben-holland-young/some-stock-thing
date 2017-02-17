@@ -66,15 +66,17 @@ var app = new Vue({
             }, response => {
                 //error
             });
-            //this.$http.get(chart).then(response => {
-                    //var link = response.body;
-                    //this.object.link = link;
-                    //console.log(this.object);
+            var n = this.prices.length;
+            var target = n - 1;
+            //when i fix the cors error you can do this 
+            this.$http.get(chart).then(response => {
+                    var link = response.body;
+                    this.prices[target].link = link;
+            }, response => {
+                //error
 
-            //}, response => {
-                ////error
+            });
 
-            //});
             console.log(this.prices);
 
             
