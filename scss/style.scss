@@ -89,3 +89,18 @@ body {
   }
 }
 
+.symbol {
+
+    color: white;
+}
+
+.remove_button {
+    background-color: black;
+    border: 1px solid black;
+    border-bottom: #3AB981;
+    color: white;
+}
+
+.remove_button:hover {
+    border-bottom: red;
+}

@@ -31,7 +31,7 @@ var app = new Vue({
         object: {},
 
         prices: [ 
-            {symbol: "APPL", date: "2017-01-14", low : "133.25", open: "133.47", close:"135.01", high:"135.09", volume:"35569698",link: "https://chart.finance.yahoo.com/z?s=AAPL&t=1d"}
+            //{symbol: "APPL", date: "2017-01-14", low : "133.25", open: "133.47", close:"135.01", high:"135.09", volume:"35569698",link: "https://chart.finance.yahoo.com/z?s=AAPL&t=1d"}
 
         ]
     },
@@ -86,7 +86,13 @@ var app = new Vue({
             
         },
 
-        removeSymbol: function() {}
+        removeSymbol: function() {},
+        removeAll: function() {
+            for(var i = 0; i <= this.prices.length; i++) {
+                this.prices.splice(i);
+            }
+
+        }
 
     }   
 

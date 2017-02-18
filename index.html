@@ -28,6 +28,7 @@
                         <input  v-model="searchSymbol" class="symbol_input" placeholder="Stock Symbol">
                         <!--<p>symbol : {{searchSymbol}}</p>-->
                         <button v-on:click="addSymbol" class="symbol_button">Add Symbol</button>
+                        <button v-on:click="removeAll" class="remove_button">Remove All</button>
                         <!--<p v-if="not_found">Stock Not Found</p>-->
 		
                     
@@ -38,7 +39,7 @@
     
         <ul class="list">
             <li v-for="price in prices" class="stock" style="list-style-type: none" >
-                <h2>{{price.symbol}}</h2>
+                <h2 class="symbol">{{price.symbol}}</h2>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
