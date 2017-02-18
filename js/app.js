@@ -64,11 +64,27 @@ var app = new Vue({
         },
 
         removeSymbol: function() {
+            var n = this.prices.length;
         
-            for(var i = 0;i < this.prices.length; i++) {
+            for(var i = 0;i < n; i++) {
                 if (this.prices[i].symbol == this.deleteSymbol) {
                     this.prices.splice(i);
                 }
+            }
+            if (this.prices.length == n) {
+
+                var dialog = new BootstrapDialog({
+                    title: 'Deleting Error',
+                    message: 'No such stock',
+                    buttons: [{
+                        label: 'Close this dialog.',
+                        action: function(dialogRef){
+                            dialogRef.close();
+                        }
+                    }]
+                });
+            
+                dialog.open();
             }
         
         },
