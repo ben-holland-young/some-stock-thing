@@ -1,37 +1,14 @@
-//function createCORSRequest(method, url) {
-  //var xhr = new XMLHttpRequest();
-  //if ("withCredentials" in xhr) {
-
-    //// Check if the XMLHttpRequest object has a "withCredentials" property.
-    //// "withCredentials" only exists on XMLHTTPRequest2 objects.
-    //xhr.open(method, url, true);
-
-  //} else if (typeof XDomainRequest != "undefined") {
-
-    //// Otherwise, check if XDomainRequest.
-    //// XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-    //xhr = new XDomainRequest();
-    //xhr.open(method, url);
-
-  //} else {
-
-    //// Otherwise, CORS is not supported by the browser.
-    //xhr = null;
-
-  //}
-  //return xhr;
-//}
-
 
 var app = new Vue({
     el: '#app',
     data: {
 		searchSymbol: "",
+        deleteSymbol: "",
         not_found: false,
         object: {},
 
         prices: [ 
-            //{symbol: "APPL", date: "2017-01-14", low : "133.25", open: "133.47", close:"135.01", high:"135.09", volume:"35569698",link: "https://chart.finance.yahoo.com/z?s=AAPL&t=1d"}
+            {symbol: "APPL", date: "2017-01-14", low : "133.25", open: "133.47", close:"135.01", high:"135.09", volume:"35569698",link: "https://chart.finance.yahoo.com/z?s=AAPL&t=1d"}
 
         ]
     },
@@ -86,7 +63,15 @@ var app = new Vue({
             
         },
 
-        removeSymbol: function() {},
+        removeSymbol: function() {
+        
+            for(var i = 0;i < this.prices.length; i++) {
+                if (this.prices[i].symbol == this.deleteSymbol) {
+                    this.prices.splice(i);
+                }
+            }
+        
+        },
         removeAll: function() {
             for(var i = 0; i <= this.prices.length; i++) {
                 this.prices.splice(i);

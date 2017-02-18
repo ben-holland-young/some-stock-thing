@@ -16,24 +16,43 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
 </head>
 <body>
-	<div id="app" class="container" style="width:100%">
+	<div id="app" class="container" width='100%'>
 		<!--<navbar></navbar>-->
 		<!--[>add grid component here<]-->
 		<!--<footer-area></footer-area>-->
-        <div class="header container">
+        <div class="header container" width='100%'>
             <div class="row">
-                    <div class="col-md-4"><p></p></div>
-                    <div class="col-md-4">
+                <div class="col-md-4">
+                    <p></p>
+                </div>
+                <div class="col-md-4">
                         <h1 class="title">some stock thing</h1>                    
-                        <input  v-model="searchSymbol" class="symbol_input" placeholder="Stock Symbol">
-                        <!--<p>symbol : {{searchSymbol}}</p>-->
-                        <button v-on:click="addSymbol" class="symbol_button">Add Symbol</button>
-                        <button v-on:click="removeAll" class="remove_button">Remove All</button>
+                </div>
+                <div class="col-md-4">
+                    <p></p>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-4">
+                    
+                            <input  v-model="searchSymbol" class="symbol_input" placeholder="Stock Symbol">
+                            <!--<p>symbol : {{searchSymbol}}</p>-->
+                            <button v-on:click="addSymbol" class="symbol_button">Add Symbol</button>
+                    </div>
+                    <div class="col-md-4">
+                        <!--<input v-model="deleteSymbol" class="delete_input" placeholder="Stock To Delete">-->
+                        <!--<button v-on:click="removeSymbol" class="remove_one_button">Remove</button>-->
                         <!--<p v-if="not_found">Stock Not Found</p>-->
+                        <input v-model="deleteSymbol" class="symbol_input" placeholder="Stock to Delete">
+                        <button v-on:click="removeSymbol" class="symbol_button">Delete</button>
 		
                     
                     </div>
-                    <div class="col-md-4"><p></p></div>
+                    <div class="col-md-4">
+                    
+                        <button v-on:click="removeAll" class="symbol_button">Remove All</button>
+                    
+                    </div>
             </div>
         </div>
     
