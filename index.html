@@ -1,118 +1,145 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Some Stock Thing</title>
-    <script src="https://use.fontawesome.com/b9f90d1df2.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Della+Respira|Droid+Serif|Inconsolata" rel="stylesheet">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
+    <title>Some Stock Thing</title>
+    <script src="https://use.fontawesome.com/b9f90d1df2.js">
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Della+Respira|Droid+Serif|Inconsolata" rel="stylesheet"><!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css"><!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
 </head>
+
 <body>
-	<div id="app" class="container" width='100%'>
-		<!--<navbar></navbar>-->
-		<!--[>add grid component here<]-->
-		<!--<footer-area></footer-area>-->
+    <div id="app" class="container" width='100%'>
+        <!--<navbar></navbar>-->
+        <!--[>add grid component here<]-->
+        <!--<footer-area></footer-area>-->
+
+
         <div class="header container" width='100%'>
             <div class="row">
                 <div class="col-md-4">
-                    <p></p>
                 </div>
+
+
                 <div class="col-md-4">
-                        <h1 class="title">some stock thing</h1>                    
+                    <h1 class="title">some stock thing</h1>
                 </div>
+
+
                 <div class="col-md-4">
-                    <p></p>
                 </div>
             </div>
+
+
             <div class="row">
-                    <div class="col-md-4">
-                    
-                            <input  v-model="searchSymbol" class="symbol_input" placeholder="ie: V, MRK, AAPl">
-                            <!--<p>symbol : {{searchSymbol}}</p>-->
-                            <button v-on:click="addSymbol" class="symbol_button">Add Symbol</button>
-                    </div>
-                    <div class="col-md-4">
-                        <!--<input v-model="deleteSymbol" class="delete_input" placeholder="Stock To Delete">-->
-                        <!--<button v-on:click="removeSymbol" class="remove_one_button">Remove</button>-->
-                        <!--<p v-if="not_found">Stock Not Found</p>-->
-                        <input v-model="deleteSymbol" class="symbol_input" placeholder="Stock to Delete">
-                        <button v-on:click="removeSymbol" class="symbol_button">Delete</button>
-		
-                    
-                    </div>
-                    <div class="col-md-4">
-                    
-                        <button v-on:click="removeAll" class="symbol_button">Remove All</button>
-                    
-                    </div>
+                <div class="col-md-4">
+                    <input v-model="searchSymbol" class="symbol_input" placeholder="ie: V, MRK, AAPl"> <!--<p>symbol : {{searchSymbol}}</p>-->
+                     <button v-on:click="addSymbol" class="symbol_button">Add Symbol</button>
+                </div>
+
+
+                <div class="col-md-4">
+                    <!--<input v-model="deleteSymbol" class="delete_input" placeholder="Stock To Delete">-->
+                    <!--<button v-on:click="removeSymbol" class="remove_one_button">Remove</button>-->
+                    <!--<p v-if="not_found">Stock Not Found</p>-->
+                    <input v-model="deleteSymbol" class="symbol_input" placeholder="Stock to Delete"> <button v-on:click="removeSymbol" class="symbol_button">Delete</button>
+                </div>
+
+
+                <div class="col-md-4">
+                    <button v-on:click="removeAll" class="symbol_button">Remove All</button>
+                </div>
             </div>
         </div>
-    
+
+
         <ul class="list">
-            <li v-for="price in prices" class="stock" style="list-style-type: none" >
+            <li v-for="price in prices" class="stock" style="list-style-type: none">
                 <h2 class="symbol">{{price.symbol}}</h2>
                 <br>
+
+
                 <div class="row">
                     <div class="col-md-4">
                         <p>Date: {{price.date}}</p>
                     </div>
+
+
                     <div class="col-md-4">
                         <p>Open: {{price.open}}</p>
                     </div>
                 </div>
                 <br>
+
+
                 <div class="row">
                     <div class="col-md-4">
                         <p>High: {{price.high}}</p>
                     </div>
+
+
                     <div class="col-md-4">
                         <p>Low: {{price.low}}</p>
                     </div>
                 </div>
                 <br>
+
+
                 <div class="row">
                     <div class="col-md-4">
                         <p>Close: {{price.close}}</p>
                     </div>
+
+
                     <div class="col-md-4">
                         <p>Volume: {{price.volume}}</p>
                     </div>
                 </div>
-                <div class="row">
-                    <img v-bind:src="price.link" alt="" style="max-height:100%; max-width: 100%;margin: 10px 10px 10px 10px" >
+
+
+                <div class="row"><img v-bind:src="price.link" alt="" style="max-height:100%; max-width: 100%;margin: 10px 10px 10px 10px">
                 </div>
             </li>
         </ul>
     </div>
-		
-		
-		
-		
-	</div>
+
+
     <div id="footer">
         <div class="row">
-            <div class="col-md-4">Made by Ben Holland-Young</div>
-            <div class="col-md-4"><a href="https://www.github.com/ben-holland-young"><i class="fa fa-github" aria-hidden="true"></i></a></div>
-            <div class="col-md-4"><p></p></div>
+            <div class="col-md-4">
+                Made by Ben Holland-Young
+            </div>
+
+
+            <div class="col-md-4">
+                <a href="https://www.github.com/ben-holland-young"></a>
+            </div>
+
+
+            <div class="col-md-4">
+            </div>
         </div>
-    
     </div>
-	
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
-    <script src="js/app.js"></script>
-    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/vue/dist/vue.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js">
+    </script>
+    <script src="js/app.js">
+    </script>
 </body>
 </html>

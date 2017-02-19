@@ -2,28 +2,21 @@
 var app = new Vue({
     el: '#app',
     data: {
-		searchSymbol: "",
+        searchSymbol: "",
         deleteSymbol: "",
-        not_found: false,
-        object: {},
-
-        prices: [ 
+        prices: [
             {symbol: "APPL", date: "2017-01-14", low : "133.25", open: "133.47", close:"135.01", high:"135.09", volume:"35569698",link: "https://chart.finance.yahoo.com/z?s=AAPL&t=1d"}
 
         ]
     },
     methods: {
         addSymbol: function() {
-            if(this.searchSymbol == "") {
-                alert("put in a symbol");
-            }
             var url = "https://www.quandl.com/api/v3/datasets/WIKI/"+this.searchSymbol+".json?api_key=xzBh9JuvESDS6uyTEX2D";
 
             //finance data api
-            
+
 
             this.$http.get(url).then(response => {
-                //console.log(response.body);
                 var dataset = response.body["dataset"];
                 var data = dataset["data"][0];
                 var object = {};
@@ -36,9 +29,8 @@ var app = new Vue({
                 object.high = data[4].toString();
                 object.link = "https://chart.finance.yahoo.com/z?s="+object.symbol+"&t=1d";
                 object.volume = data[5].toString();
-                
+
                 this.prices.push(object);
-                //console.log(this.object);
 
             }, response => {
                 //error
@@ -52,20 +44,19 @@ var app = new Vue({
                         }
                     }]
                 });
-            
+
                 dialog.open();
-                this.not_found = true;
             });
 
             console.log(this.prices);
-        
 
-            
+
+
         },
 
         removeSymbol: function() {
             var n = this.prices.length;
-        
+
             for(var i = 0;i < n; i++) {
                 if (this.prices[i].symbol == this.deleteSymbol) {
                     this.prices.splice(i,1);
@@ -83,10 +74,10 @@ var app = new Vue({
                         }
                     }]
                 });
-            
+
                 dialog.open();
             }
-        
+
         },
         removeAll: function() {
             for(var i = 0; i <= this.prices.length; i++) {
@@ -95,20 +86,20 @@ var app = new Vue({
 
         }
 
-    }   
+    }
 
 
 });
 
 //{
-  //// GET /someUrl
-  //this.$http.get('/someUrl').then(response => {
+//// GET /someUrl
+//this.$http.get('/someUrl').then(response => {
 
-    //// get body data
-    //this.someData = response.body;
+//// get body data
+//this.someData = response.body;
 
-  //}, response => {
-    //// error callback
-  //});
+//}, response => {
+//// error callback
+//});
 //}
 //<script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
