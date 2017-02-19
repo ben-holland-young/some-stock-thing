@@ -68,7 +68,7 @@ var app = new Vue({
         
             for(var i = 0;i < n; i++) {
                 if (this.prices[i].symbol == this.deleteSymbol) {
-                    this.prices.splice(i);
+                    this.prices.splice(i,1);
                 }
             }
             if (this.prices.length == n) {
